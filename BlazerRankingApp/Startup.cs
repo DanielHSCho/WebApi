@@ -1,5 +1,6 @@
 using BlazerRankingApp.Areas.Identity;
 using BlazerRankingApp.Data;
+using BlazerRankingApp.Data.Migrations;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
@@ -40,6 +41,8 @@ namespace BlazerRankingApp
             services.AddServerSideBlazor();
             services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
             services.AddSingleton<WeatherForecastService>();
+
+            services.AddScoped<RankingService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
