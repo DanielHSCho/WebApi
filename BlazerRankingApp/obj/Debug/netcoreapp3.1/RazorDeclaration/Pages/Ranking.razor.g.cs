@@ -4,7 +4,7 @@
 #pragma warning disable 0649
 #pragma warning disable 0169
 
-namespace BlazerRankingApp.Shared
+namespace BlazerRankingApp.Pages
 {
     #line hidden
     using System;
@@ -75,7 +75,22 @@ using BlazerRankingApp.Shared;
 #line default
 #line hidden
 #nullable disable
-    public partial class NavMenu : Microsoft.AspNetCore.Components.ComponentBase
+#nullable restore
+#line 2 "C:\Users\helle\Projects\2_WebServer\BlazerDBApp\BlazerRankingApp\BlazerRankingApp\Pages\Ranking.razor"
+using BlazerRankingApp.Data.Models;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 3 "C:\Users\helle\Projects\2_WebServer\BlazerDBApp\BlazerRankingApp\BlazerRankingApp\Pages\Ranking.razor"
+using BlazerRankingApp.Data.Services;
+
+#line default
+#line hidden
+#nullable disable
+    [Microsoft.AspNetCore.Components.RouteAttribute("/ranking")]
+    public partial class Ranking : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -83,20 +98,19 @@ using BlazerRankingApp.Shared;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 33 "C:\Users\helle\Projects\2_WebServer\BlazerDBApp\BlazerRankingApp\BlazerRankingApp\Shared\NavMenu.razor"
+#line 32 "C:\Users\helle\Projects\2_WebServer\BlazerDBApp\BlazerRankingApp\BlazerRankingApp\Pages\Ranking.razor"
        
-    private bool collapseNavMenu = true;
+    List<GameResult> _gameResults;
 
-    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
-
-    private void ToggleNavMenu()
+    protected override async Task OnInitializedAsync()
     {
-        collapseNavMenu = !collapseNavMenu;
+        _gameResults = await RankingService.GetGameResultsAsync();
     }
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private RankingService RankingService { get; set; }
     }
 }
 #pragma warning restore 1591

@@ -19,7 +19,7 @@ namespace BlazerRankingApp.Data.Services
         {
             List<GameResult> results = _context.GameResults
                 .OrderByDescending(item=>item.Score)
-                .ToList<GameResult>();
+                .ToList();
 
             return Task.FromResult(results);
         }
