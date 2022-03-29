@@ -1,6 +1,6 @@
 using BlazerRankingApp.Areas.Identity;
 using BlazerRankingApp.Data;
-using BlazerRankingApp.Data.Migrations;
+using BlazerRankingApp.Data.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
