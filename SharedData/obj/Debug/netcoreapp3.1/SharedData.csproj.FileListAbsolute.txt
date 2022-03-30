@@ -1,0 +1,10 @@
+C:\Users\helle\Projects\2_WebServer\BlazerDBApp\BlazerRankingApp\SharedData\bin\Debug\netcoreapp3.1\SharedData.deps.json
+C:\Users\helle\Projects\2_WebServer\BlazerDBApp\BlazerRankingApp\SharedData\bin\Debug\netcoreapp3.1\SharedData.dll
+C:\Users\helle\Projects\2_WebServer\BlazerDBApp\BlazerRankingApp\SharedData\bin\Debug\netcoreapp3.1\SharedData.pdb
+C:\Users\helle\Projects\2_WebServer\BlazerDBApp\BlazerRankingApp\SharedData\obj\Debug\netcoreapp3.1\SharedData.csproj.AssemblyReference.cache
+C:\Users\helle\Projects\2_WebServer\BlazerDBApp\BlazerRankingApp\SharedData\obj\Debug\netcoreapp3.1\SharedData.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\helle\Projects\2_WebServer\BlazerDBApp\BlazerRankingApp\SharedData\obj\Debug\netcoreapp3.1\SharedData.AssemblyInfoInputs.cache
+C:\Users\helle\Projects\2_WebServer\BlazerDBApp\BlazerRankingApp\SharedData\obj\Debug\netcoreapp3.1\SharedData.AssemblyInfo.cs
+C:\Users\helle\Projects\2_WebServer\BlazerDBApp\BlazerRankingApp\SharedData\obj\Debug\netcoreapp3.1\SharedData.csproj.CoreCompileInputs.cache
+C:\Users\helle\Projects\2_WebServer\BlazerDBApp\BlazerRankingApp\SharedData\obj\Debug\netcoreapp3.1\SharedData.dll
+C:\Users\helle\Projects\2_WebServer\BlazerDBApp\BlazerRankingApp\SharedData\obj\Debug\netcoreapp3.1\SharedData.pdb
