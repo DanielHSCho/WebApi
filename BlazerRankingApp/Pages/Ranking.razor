@@ -29,6 +29,33 @@
                     }
                 </tbody>
             </table>
+
+            <p>
+                <button class="btn btn-primary" @onclick="AddGameResult">
+                    Add
+                </button>
+            </p>
+
+            @if (_showPopup) { 
+                <div class="modal" style="display:block" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="modal-title">Add/Update GameResult</h3>
+                                <button type="button" class="close" @onclick="ClosePopup">
+                                    <span aria-hidden="true">X</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <label for="UserName">UserName</label>
+                                <input class="form-control" type="text" placeholder="UserName" @bind-value="_gameResult.UserName" />
+                                <label for="Score">Score</label>
+                                <input class="form-control" type="number" placeholder="Score" @bind-value="_gameResult.Score" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                }
         }
     </Authorized>
     <NotAuthorized>
@@ -39,8 +66,22 @@
 @code {
     List<GameResult> _gameResults;
 
+    bool _showPopup;
+    GameResult _gameResult;
+
     protected override async Task OnInitializedAsync()
     {
         _gameResults = await RankingService.GetGameResultsAsync();
+    }
+
+    void AddGameResult()
+    {
+        _showPopup = true;
+        _gameResult = new GameResult() { Id = 0 };
+    }
+
+    void ClosePopup()
+    {
+        _showPopup = false;
     }
 }
