@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using SharedData.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,24 @@ namespace WebApi.Controllers
             _context = context;
         }
 
+        [HttpGet]
+        public List<GameResult> GetGameResults()
+        {
+            List<GameResult> results = _context.GameResults
+                .OrderByDescending(item => item.Score)
+                .ToList();
 
+            return results;
+        }
+
+        [HttpGet("{id}")]
+        public GameResult GetGameResult(int id)
+        {
+            GameResult result = _context.GameResults
+                .Where(item => item.Id == id)
+                .FirstOrDefault();
+
+            return result;
+        }
     }
 }
