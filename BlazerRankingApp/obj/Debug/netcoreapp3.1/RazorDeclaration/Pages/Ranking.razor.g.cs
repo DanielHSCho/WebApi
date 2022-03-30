@@ -98,12 +98,38 @@ using BlazerRankingApp.Data.Services;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 32 "C:\Users\helle\Projects\2_WebServer\BlazerDBApp\BlazerRankingApp\BlazerRankingApp\Pages\Ranking.razor"
+#line 69 "C:\Users\helle\Projects\2_WebServer\BlazerDBApp\BlazerRankingApp\BlazerRankingApp\Pages\Ranking.razor"
        
     List<GameResult> _gameResults;
 
+    bool _showPopup;
+    GameResult _gameResult;
+
     protected override async Task OnInitializedAsync()
     {
+        _gameResults = await RankingService.GetGameResultsAsync();
+    }
+
+    void AddGameResult()
+    {
+        _showPopup = true;
+        _gameResult = new GameResult() { Id = 0 };
+    }
+
+    void ClosePopup()
+    {
+        _showPopup = false;
+    }
+
+    async Task SaveGameResult()
+    {
+        if(_gameResult.Id == 0) {
+            _gameResult.Date = DateTime.Now;
+            var result = RankingService.AddGameResult(_gameResult);
+        } else {
+            // TODO - 수정하고 있는 상태
+        }
+
         _gameResults = await RankingService.GetGameResultsAsync();
     }
 
