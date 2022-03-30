@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazerRankingApp", "BlazerR
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "WebApi\WebApi.csproj", "{12292F09-351B-4720-A952-F4FAF0158EC3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedData", "SharedData\SharedData.csproj", "{9B6A8373-EED0-433C-B324-F9DB3D44A0CF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{12292F09-351B-4720-A952-F4FAF0158EC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{12292F09-351B-4720-A952-F4FAF0158EC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{12292F09-351B-4720-A952-F4FAF0158EC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B6A8373-EED0-433C-B324-F9DB3D44A0CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B6A8373-EED0-433C-B324-F9DB3D44A0CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B6A8373-EED0-433C-B324-F9DB3D44A0CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B6A8373-EED0-433C-B324-F9DB3D44A0CF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
