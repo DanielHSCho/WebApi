@@ -17,15 +17,23 @@
                         <th>UserName</th>
                         <th>Score</th>
                         <th>Date</th>
+                        <th></th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var gameResult in _gameResults) {
-                        <tr>
-                            <td>@gameResult.UserName</td>
-                            <td>@gameResult.Score</td>
-                            <td>@gameResult.Date.ToString()</td>
-                        </tr>
+                    <tr>
+                        <td>@gameResult.UserName</td>
+                        <td>@gameResult.Score</td>
+                        <td>@gameResult.Date.ToString()</td>
+                        <td>
+                            <button class="btn btn-primary" @onclick="() => UpdateGameResult(gameResult)">Edit</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-primary" @onclick="() => DeleteGameResult(gameResult)">Delete</button>
+                        </td>
+                    </tr>
                     }
                 </tbody>
             </table>
@@ -88,15 +96,29 @@
         _showPopup = false;
     }
 
+    void UpdateGameResult(GameResult gameResult)
+    {
+        _showPopup = true;
+        _gameResult = gameResult;
+
+    }
+
+    async Task DeleteGameResult(GameResult gameResult)
+    {
+        var result = RankingService.DeleteGameResult(gameResult);
+        _gameResults = await RankingService.GetGameResultsAsync();
+    }
+
     async Task SaveGameResult()
     {
-        if(_gameResult.Id == 0) {
+        if(_gameResult.Id == 0) { // 추가
             _gameResult.Date = DateTime.Now;
             var result = RankingService.AddGameResult(_gameResult);
-        } else {
-            // TODO - 수정하고 있는 상태
+        } else { // 수정
+            var result = RankingService.UpdateGameResult(_gameResult);
         }
 
+        _showPopup = false;
         _gameResults = await RankingService.GetGameResultsAsync();
     }
 }
