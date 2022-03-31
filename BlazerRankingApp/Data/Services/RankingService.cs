@@ -1,8 +1,10 @@
-﻿using SharedData.Models;
+﻿using Newtonsoft.Json;
+using SharedData.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace BlazerRankingApp.Data.Services
@@ -16,9 +18,20 @@ namespace BlazerRankingApp.Data.Services
             _httpClient = client;
         }
 
-        public Task<GameResult> AddGameResult(GameResult gameResult)
+        public async Task<GameResult> AddGameResult(GameResult gameResult)
         {
-            return Task.FromResult(gameResult);
+            string jsonStr = JsonConvert.SerializeObject(gameResult);
+            var content = new StringContent(jsonStr, Encoding.UTF8, "application/json");
+            var result = await _httpClient.PostAsync("api/ranking", content);
+
+            if(result.IsSuccessStatusCode == false) {
+                throw new Exception("Add GameResult Failed");
+            }
+
+            var resultContent = await result.Content.ReadAsStringAsync();
+            GameResult resultGameResult = JsonConvert.DeserializeObject<GameResult>(resultContent);
+
+            return resultGameResult;
         }
 
         public Task<List<GameResult>> GetGameResultsAsync()
