@@ -109,3 +109,5 @@ C:\Users\helle\Projects\2_WebServer\BlazerDBApp\BlazerRankingApp\BlazerRankingAp
 C:\Users\helle\Projects\2_WebServer\BlazerDBApp\BlazerRankingApp\BlazerRankingApp\obj\Debug\netcoreapp3.1\BlazerRankingApp.genruntimeconfig.cache
 C:\Users\helle\Projects\2_WebServer\BlazerDBApp\BlazerRankingApp\BlazerRankingApp\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\Ranking.razor.g.cs
 C:\Users\helle\Projects\2_WebServer\BlazerDBApp\BlazerRankingApp\BlazerRankingApp\obj\Debug\netcoreapp3.1\Razor\Pages\Ranking.razor.g.cs
+C:\Users\helle\Projects\2_WebServer\BlazerDBApp\BlazerRankingApp\BlazerRankingApp\bin\Debug\netcoreapp3.1\SharedData.dll
+C:\Users\helle\Projects\2_WebServer\BlazerDBApp\BlazerRankingApp\BlazerRankingApp\bin\Debug\netcoreapp3.1\SharedData.pdb

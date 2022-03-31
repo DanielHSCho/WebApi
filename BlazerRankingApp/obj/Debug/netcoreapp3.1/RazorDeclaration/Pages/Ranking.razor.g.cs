@@ -77,7 +77,7 @@ using BlazerRankingApp.Shared;
 #nullable disable
 #nullable restore
 #line 2 "C:\Users\helle\Projects\2_WebServer\BlazerDBApp\BlazerRankingApp\BlazerRankingApp\Pages\Ranking.razor"
-using BlazerRankingApp.Data.Models;
+using SharedData.Models;
 
 #line default
 #line hidden
@@ -130,17 +130,17 @@ using BlazerRankingApp.Data.Services;
 
     async Task DeleteGameResult(GameResult gameResult)
     {
-        var result = RankingService.DeleteGameResult(gameResult);
+        var result = await RankingService.DeleteGameResult(gameResult);
         _gameResults = await RankingService.GetGameResultsAsync();
     }
 
     async Task SaveGameResult()
     {
-        if(_gameResult.Id == 0) { // 추가
+        if (_gameResult.Id == 0) { // 추가
             _gameResult.Date = DateTime.Now;
-            var result = RankingService.AddGameResult(_gameResult);
+            var result = await RankingService.AddGameResult(_gameResult);
         } else { // 수정
-            var result = RankingService.UpdateGameResult(_gameResult);
+            var result = await RankingService.UpdateGameResult(_gameResult);
         }
 
         _showPopup = false;
