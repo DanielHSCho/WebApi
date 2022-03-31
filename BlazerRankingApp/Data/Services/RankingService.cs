@@ -30,23 +30,40 @@ namespace BlazerRankingApp.Data.Services
 
             var resultContent = await result.Content.ReadAsStringAsync();
             GameResult resultGameResult = JsonConvert.DeserializeObject<GameResult>(resultContent);
-
             return resultGameResult;
         }
 
-        public Task<List<GameResult>> GetGameResultsAsync()
+        public async Task<List<GameResult>> GetGameResultsAsync()
         {
-            return Task.FromResult(results);
+            var result = await _httpClient.GetAsync("api/ranking");
+
+            var resultContent = await result.Content.ReadAsStringAsync();
+            List<GameResult> resGameResults = JsonConvert.DeserializeObject<List<GameResult>>(resultContent);
+            return resGameResults;
         }
 
-        public Task<bool> UpdateGameResult(GameResult gameResult)
+        public async Task<bool> UpdateGameResult(GameResult gameResult)
         {
-            return Task.FromResult(true);
+            string jsonStr = JsonConvert.SerializeObject(gameResult);
+            var content = new StringContent(jsonStr, Encoding.UTF8, "application/json");
+            var result = await _httpClient.PutAsync("api/ranking", content);
+
+            if (result.IsSuccessStatusCode == false) {
+                throw new Exception("Update GameResult Failed");
+            }
+
+            return true;
         }
 
-        public Task<bool> DeleteGameResult(GameResult gameResult)
+        public async Task<bool> DeleteGameResult(GameResult gameResult)
         {
-            return Task.FromResult(true);
+            var result = await _httpClient.DeleteAsync($"api/ranking/{gameResult.Id}");
+
+            if(result.IsSuccessStatusCode == false) {
+                throw new Exception("DeleteGameResult Failed");
+            }
+
+            return true;
         }
     }
 }
