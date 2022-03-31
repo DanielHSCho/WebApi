@@ -43,6 +43,7 @@ namespace BlazerRankingApp
             services.AddSingleton<WeatherForecastService>();
 
             services.AddHttpClient<RankingService>(c => {
+                c.BaseAddress = new Uri("https://localhost:44314");
             });
         }
 
