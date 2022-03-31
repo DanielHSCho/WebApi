@@ -42,7 +42,8 @@ namespace BlazerRankingApp
             services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
             services.AddSingleton<WeatherForecastService>();
 
-            services.AddScoped<RankingService>();
+            services.AddHttpClient<RankingService>(c => {
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
