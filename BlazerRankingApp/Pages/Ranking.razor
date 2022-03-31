@@ -1,5 +1,5 @@
 ﻿@page "/ranking"
-@using BlazerRankingApp.Data.Models;
+@using SharedData.Models;
 @using BlazerRankingApp.Data.Services;
 
 @inject RankingService RankingService
@@ -23,17 +23,17 @@
                 </thead>
                 <tbody>
                     @foreach (var gameResult in _gameResults) {
-                    <tr>
-                        <td>@gameResult.UserName</td>
-                        <td>@gameResult.Score</td>
-                        <td>@gameResult.Date.ToString()</td>
-                        <td>
-                            <button class="btn btn-primary" @onclick="() => UpdateGameResult(gameResult)">Edit</button>
-                        </td>
-                        <td>
-                            <button class="btn btn-primary" @onclick="() => DeleteGameResult(gameResult)">Delete</button>
-                        </td>
-                    </tr>
+                        <tr>
+                            <td>@gameResult.UserName</td>
+                            <td>@gameResult.Score</td>
+                            <td>@gameResult.Date.ToString()</td>
+                            <td>
+                                <button class="btn btn-primary" @onclick="() => UpdateGameResult(gameResult)">Edit</button>
+                            </td>
+                            <td>
+                                <button class="btn btn-primary" @onclick="() => DeleteGameResult(gameResult)">Delete</button>
+                            </td>
+                        </tr>
                     }
                 </tbody>
             </table>
@@ -44,7 +44,7 @@
                 </button>
             </p>
 
-            @if (_showPopup) { 
+            @if (_showPopup) {
                 <div class="modal" style="display:block" role="dialog">
                     <div class="modal-dialog">
                         <div class="modal-content">
@@ -66,7 +66,7 @@
                         </div>
                     </div>
                 </div>
-                }
+            }
         }
     </Authorized>
     <NotAuthorized>
@@ -105,17 +105,17 @@
 
     async Task DeleteGameResult(GameResult gameResult)
     {
-        var result = RankingService.DeleteGameResult(gameResult);
+        var result = await RankingService.DeleteGameResult(gameResult);
         _gameResults = await RankingService.GetGameResultsAsync();
     }
 
     async Task SaveGameResult()
     {
-        if(_gameResult.Id == 0) { // 추가
+        if (_gameResult.Id == 0) { // 추가
             _gameResult.Date = DateTime.Now;
-            var result = RankingService.AddGameResult(_gameResult);
+            var result = await RankingService.AddGameResult(_gameResult);
         } else { // 수정
-            var result = RankingService.UpdateGameResult(_gameResult);
+            var result = await RankingService.UpdateGameResult(_gameResult);
         }
 
         _showPopup = false;
